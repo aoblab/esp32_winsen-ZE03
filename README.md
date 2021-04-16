@@ -9,5 +9,11 @@ There are many places where datasheets are wrong. You need to look carefully.
 Usage
 ---
 winsen-ze03 have two modes: an active mode and a Question and answer mode.
+
+Active mode
+---
 ![A](https://user-images.githubusercontent.com/32832715/115053042-a5d30180-9f19-11eb-9630-da6a58f55690.PNG)
+
+Q&A mode
+---
 ![Q](https://user-images.githubusercontent.com/32832715/115053048-a79cc500-9f19-11eb-80a6-3411a3bd493a.png)
