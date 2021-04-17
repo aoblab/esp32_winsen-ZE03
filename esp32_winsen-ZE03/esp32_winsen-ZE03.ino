@@ -3,7 +3,7 @@
 byte command[] = {0xFF, 0x01, 0x78, 0x04, 0x00, 0x00, 0x00, 0x00, 0x83};//Q&A mode command
 byte QnA[] = {0xFF, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79};//To read the concentration value
 byte readBuffer[9] = {};
-int O3;
+float O3;
 
 unsigned char FucCheckSum(unsigned char *i, unsigned char ln)//CheckSum
 {
@@ -27,6 +27,10 @@ void setup() {
     Serial.print(readBuffer[i], HEX); Serial.print(" ");//print receive data
   }
   Serial.println(readBuffer[8], HEX);
+  for(int i=0; i<300; i++){
+    Serial.print("wait until 300"); Serial.print(" "); Serial.println(i);
+    delay(1000);
+  }
 }
 
 void loop() {
@@ -37,7 +41,7 @@ void loop() {
       Serial2.readBytes(readBuffer, sizeof(readBuffer));//Q&A read
       byte Check = FucCheckSum(readBuffer, sizeof(readBuffer));//Checksum
       if (Check == readBuffer[8]) {//Checksum compare
-        O3 = readBuffer[2] * 256 + readBuffer[3];//gas concentration
+        O3 = readBuffer[2] * 256 + readBuffer[3]*0.1;//gas concentration
         Serial.println(O3);
       }
     }
